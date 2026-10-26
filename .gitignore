@@ -1,5 +1,5 @@
 #Build Output
-bin/
-obj/
+bin/*
+obj/*
 
 habits.json
