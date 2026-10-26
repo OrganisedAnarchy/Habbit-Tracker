@@ -1,1 +1,5 @@
+#Build Output
+bin/
+obj/
+
 habits.json
