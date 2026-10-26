@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Habbit Tracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3be2e2421c545d31c0c76473c9d9b882a5c328b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Habbit Tracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Habbit Tracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

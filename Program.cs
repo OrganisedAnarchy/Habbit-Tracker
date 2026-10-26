@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Text.Json;
+using System.IO;
+
+string filePath = "habits.json";
 
 List<Habit> habits = new List<Habit>();
 int nextId = 1;
+
+LoadHabits();
 
 while (true)
 {
@@ -53,7 +59,7 @@ void AddHabit()
 
     DateTime startDate = DateTime.Now;
 
-    Habit newHabit = new Habit(name ?? "", description ?? "", frequency, startDate);
+    Habit newHabit = new Habit(nextId++, name ?? "", description ?? "", frequency, startDate);
     habits.Add(newHabit);
 
     Console.WriteLine("Habit added successfully! Press any key to continue.");
@@ -116,6 +122,26 @@ void DeleteHabit()
 void SaveHabits()
 {
     // Implement saving habits to a file or database if needed
+    string json = System.Text.Json.JsonSerializer.Serialize(habits);
+    File.WriteAllText("habits.json", json);
     Console.WriteLine("Exiting the application. Goodbye!");
 
+}
+
+void LoadHabits()
+{
+    // Implement loading habits from a file or database if needed
+    if (File.Exists("habits.json"))
+    {
+        string json = File.ReadAllText("habits.json");
+        var loadedHabits = System.Text.Json.JsonSerializer.Deserialize<List<Habit>>(json);
+        if (loadedHabits != null)
+        {
+            habits.AddRange(loadedHabits);
+        }
+    }
+
+    nextId = habits.Count > 0
+    ? habits.Max(h => h.Id) + 1
+    : 1;
 }
