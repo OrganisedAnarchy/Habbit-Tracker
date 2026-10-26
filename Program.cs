@@ -62,8 +62,28 @@ void AddHabit()
     int frequency = int.Parse(Console.ReadLine() ?? "0");
 
     DateTime startDate = DateTime.Now;
-
+    Console.WriteLine("Does this habit have a deadline? (y/n): ");
+    string? hasDeadlineInput = Console.ReadLine();
+    DateTime? deadline = null;
+    bool validDeadline = false;
+    if (hasDeadlineInput?.ToLower() == "y")
+    {
+        while (!validDeadline)
+        {
+            Console.Write("Enter deadline (yyyy-MM-dd): ");
+            string? deadlineInput = Console.ReadLine();
+            if (DateTime.TryParse(deadlineInput, out DateTime parsedDeadline))
+            {
+                deadline = parsedDeadline;
+                validDeadline = true;
+            } else
+            {
+                Console.WriteLine("Invalid date format. Try again. Press any key to continue.");
+            }
+        }
+    }
     Habit newHabit = new Habit(nextId++, name ?? "", description ?? "", frequency, startDate);
+    newHabit.Deadline = deadline;
     habits.Add(newHabit);
 
     Console.WriteLine("Habit added successfully! Press any key to continue.");
@@ -123,7 +143,7 @@ void ListHabits()
         for (int i = 0; i < habits.Count; i++)
         {
             Habit habit = habits[i];
-            Console.WriteLine($"{i + 1}. {habit.Name} - {habit.Description} - Frequency: {habit.Frequency} times/week - Completed: {habit.IsCompleted}");
+            Console.WriteLine($"{i + 1}. {habit.Name} - {habit.Description} - Frequency: {habit.Frequency} times/week - Completed: {habit.IsCompleted} - Start Date: {habit.StartDate.ToShortDateString()} - Deadline: {(habit.Deadline.HasValue ? habit.Deadline.Value.ToShortDateString() : "None")}");
         }
     }
 }
