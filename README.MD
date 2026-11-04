@@ -1,10 +1,19 @@
-# Habit Tracker.
-Little C# Application I created for tracking habbits.
-## TODO
-I plan to add a UI to this so it doesn't use CMD\
-Find a way to make it run as a system tray application so Reminders can be set\
-~~Add a way to modify a habit~~\
-Make a habit repeatedable - So that when it's complete it gets automatically added back.\
-Repeatable Habbits will track how manytimes it was marked successful.\
-~~Add a Deadline system~~.\
-Add Exected error handling.\
+# Habit Tracker
+
+A small command-line habit tracker written in C# and targeting .NET 10.
+
+## Features
+
+- Add, view, modify, complete, and delete habits.
+- Record a weekly target and an optional deadline for each habit.
+- Save habits as JSON in the current working directory when you exit.
+
+## Run
+
+Install the .NET 10 SDK, then run the application from the repository root:
+
+```sh
+dotnet run
+```
+
+Follow the numbered menu to manage habits. The application stores its data in `habits.json` in the working directory.
